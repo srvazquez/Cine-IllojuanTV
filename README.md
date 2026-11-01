@@ -29,7 +29,7 @@ de película) para navegar con el mando de Android TV.
 
 **La app no reproduce vídeos ni descarga nada**: al elegir un vídeo, lo abre en la app de YouTube
 de tu tele. Si tienes YouTube desactivado, lo abre en [SmartTube](https://github.com/yuliskov/SmartTube),
-y si no hay ninguna de las dos, en cualquier app que sepa abrir enlaces de YouTube.
+y si no hay ninguna de las dos, en otra app que abra enlaces de YouTube (nunca en un navegador).
 
 ## Características
 
@@ -37,7 +37,8 @@ y si no hay ninguna de las dos, en cualquier app que sepa abrir enlaces de YouTu
 
 Una fila por categoría, con las mismas letras A–Z que la web. Al seleccionar un vídeo, su título se
 desplaza para que se lea entero. Arriba, **hoy toca** recomienda un vídeo distinto cada día
-(preferiblemente uno que no hayas visto), y el botón **● Directo** abre el Cine 24/7 en la app de
+(preferiblemente uno que no hayas visto), y el botón **● Directo** abre el Cine 24/7 en
+[S0undTV](https://github.com/s0und/s0undtv) si lo tienes instalado, o si no en la app oficial de
 Twitch.
 
 ### Ruleta
@@ -146,7 +147,7 @@ Otras utilidades:
 | `data/CatalogSource.kt` | Web → copia guardada → copia incluida en el APK |
 | `data/Library.kt` | Vistos, Mi lista, novedades y categorías ocultas |
 | `data/Picks.kt` | "Hoy toca", búsqueda y filtros de la ruleta |
-| `Player.kt` | Abre el vídeo en YouTube / SmartTube y el directo en Twitch |
+| `Player.kt` | Abre el vídeo en YouTube / SmartTube y el directo en S0undTV / Twitch |
 | `ui/HomeScreen.kt` | Cabecera estilo overlay y filas |
 | `ui/RouletteDialog.kt`, `ui/SearchScreen.kt`, `ui/CategoriesDialog.kt`, `ui/AboutDialog.kt` | Ruleta, búsqueda, categorías y aviso |
 | `ui/Theme.kt`, `ui/Components.kt`, `ui/VideoCard.kt` | Paleta, tipografías y piezas comunes |

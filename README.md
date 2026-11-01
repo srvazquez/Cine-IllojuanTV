@@ -8,6 +8,7 @@
   Todo el catálogo público de <a href="https://illojuan.tv">illojuan.tv</a> en tu tele, para verlo con el mando.
   <br>
   <a href="../../releases/latest"><strong>⬇️ Descargar la última versión (APK)</strong></a>
+  · En la tele, con la app <em>Downloader</em>: código <strong>3765313</strong>
 </p>
 
 > [!IMPORTANT]
@@ -86,7 +87,8 @@ vídeos, YouTube o SmartTube instalados.
 
 1. Descarga `CineIlloJuan-x.y.z.apk` de la [última release](../../releases/latest).
 2. Instálalo de una de estas formas:
-   - **Downloader** (app de la tienda de la tele): introduce la URL del APK de la release.
+   - **Downloader** (app de la tienda de la tele): escribe el código **`3765313`** (o la dirección
+     `aftv.news/3765313`) y se descarga e instala la versión 1.0.2 directamente.
    - **ADB** desde el ordenador, con la depuración activada en la tele
      (*Ajustes → Preferencias del dispositivo → Información*, pulsa 7 veces en "Compilación";
      luego activa la depuración en *Opciones de desarrollador*):

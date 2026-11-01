@@ -6,10 +6,8 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.widget.Toast
+import com.adrian.cineillojuan.data.CINEMA_TWITCH_CHANNEL
 import com.adrian.cineillojuan.data.Video
-
-/** Canal de Twitch donde se emite el Cine IlloJuan las 24 horas. */
-private const val TWITCH_CHANNEL = "illojuan"
 
 /** Una forma de abrir algo: el enlace y, si hace falta, la app concreta. */
 private data class Target(val uri: String, val pkg: String)
@@ -31,10 +29,10 @@ fun Context.playVideo(video: Video) {
 }
 
 fun Context.openLiveCinema() {
-    val web = "https://www.twitch.tv/$TWITCH_CHANNEL"
+    val web = "https://www.twitch.tv/$CINEMA_TWITCH_CHANNEL"
     open(
         preferred = listOf(
-            Target("s0undtv://stream/$TWITCH_CHANNEL", "com.s0und.s0undtv"), // S0undTV, con su propio enlace
+            Target("s0undtv://stream/$CINEMA_TWITCH_CHANNEL", "com.s0und.s0undtv"), // S0undTV, con su propio enlace
             Target(web, "tv.twitch.android.viewer"),                         // Twitch para Android TV
             Target(web, "tv.twitch.android.app"),                            // Twitch móvil
         ),

@@ -41,6 +41,7 @@ class ScreenshotTest {
                     library = LibraryState(),
                     actions = VideoActions(play = {}, toggleFavorite = {}),
                     onSetCategoryHidden = { _, _ -> },
+                    live = true,
                     refreshing = false,
                     refreshError = null,
                     onRefresh = {},

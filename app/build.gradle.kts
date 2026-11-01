@@ -16,8 +16,8 @@ android {
         applicationId = "com.adrian.cineillojuan"
         minSdk = 26
         targetSdk = 35
-        versionCode = 2
-        versionName = "1.0.1"
+        versionCode = 3
+        versionName = "1.0.2"
     }
 
     // Clave de firma de las releases oficiales. No está en el repositorio: se lee de un

@@ -49,6 +49,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LocalLifecycleOwner
+import androidx.lifecycle.repeatOnLifecycle
+import kotlinx.coroutines.delay
 import androidx.tv.material3.Border
 import androidx.tv.material3.Card
 import androidx.tv.material3.CardDefaults
@@ -90,6 +94,16 @@ class VideoActions(val play: (Video) -> Unit, val toggleFavorite: (Video) -> Uni
 @Composable
 fun HomeScreen(viewModel: CatalogViewModel) {
     val context = LocalContext.current
+    // Mientras la app está en pantalla, se mira cada 2 minutos si el Cine está en directo.
+    val lifecycle = LocalLifecycleOwner.current.lifecycle
+    LaunchedEffect(lifecycle) {
+        lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+            while (true) {
+                viewModel.checkLive()
+                delay(2 * 60 * 1000L)
+            }
+        }
+    }
     val actions = remember(viewModel) {
         VideoActions(
             play = { viewModel.markSeen(it.url); context.playVideo(it) },
@@ -123,6 +137,7 @@ fun HomeScreen(viewModel: CatalogViewModel) {
             library = LibraryState(viewModel.seen, viewModel.favorites, viewModel.newVideos, viewModel.hiddenCategories),
             actions = actions,
             onSetCategoryHidden = viewModel::setCategoryHidden,
+            live = viewModel.live,
             refreshing = viewModel.refreshing,
             refreshError = viewModel.refreshError,
             onRefresh = viewModel::refresh,
@@ -136,6 +151,7 @@ internal fun CatalogContent(
     library: LibraryState,
     actions: VideoActions,
     onSetCategoryHidden: (String, Boolean) -> Unit,
+    live: Boolean?,
     refreshing: Boolean,
     refreshError: String?,
     onRefresh: () -> Unit,
@@ -193,6 +209,7 @@ internal fun CatalogContent(
                     onCategories = { showCategories = true },
                     onRoulette = { showRoulette = true },
                     onSearch = { searching = true },
+                    live = live,
                     onLive = { context.openLiveCinema() },
                     rouletteFocus = rouletteFocus,
                 )
@@ -248,6 +265,7 @@ private fun Header(
     onCategories: () -> Unit,
     onRoulette: () -> Unit,
     onSearch: () -> Unit,
+    live: Boolean?,
     onLive: () -> Unit,
     rouletteFocus: FocusRequester,
 ) {
@@ -285,7 +303,10 @@ private fun Header(
                     modifier = Modifier.focusRequester(rouletteFocus),
                 )
                 CineButton("Buscar", onClick = onSearch, compact = true, maxLines = 1)
-                CineButton("● Directo", onClick = onLive, compact = true, maxLines = 1)
+                // Solo si el Cine está emitiendo (o si no se ha podido comprobar, para no perder el botón).
+                if (live != false) {
+                    CineButton(if (live == true) "● En directo" else "● Directo", onClick = onLive, compact = true, maxLines = 1)
+                }
             }
         }
 

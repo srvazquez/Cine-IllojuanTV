@@ -37,8 +37,8 @@ y si no hay ninguna de las dos, en otra app que abra enlaces de YouTube (nunca e
 
 Una fila por categoría, con las mismas letras A–Z que la web. Al seleccionar un vídeo, su título se
 desplaza para que se lea entero. Arriba, **hoy toca** recomienda un vídeo distinto cada día
-(preferiblemente uno que no hayas visto), y el botón **● Directo** abre el Cine 24/7 en
-[S0undTV](https://github.com/s0und/s0undtv) si lo tienes instalado, o si no en la app oficial de
+(preferiblemente uno que no hayas visto). Cuando el Cine está emitiendo aparece el botón
+**● En directo**, que lo abre en [S0undTV](https://github.com/s0und/s0undtv) si lo tienes instalado, o si no en la app oficial de
 Twitch.
 
 ### Ruleta
@@ -112,8 +112,10 @@ de serie para el primer arranque sin conexión).
 
 ## Privacidad
 
-La app solo se conecta a illojuan.tv (catálogo y miniaturas). Vistos, Mi lista y categorías ocultas
-se guardan únicamente en la tele. No hay cuentas, analíticas ni anuncios.
+La app solo se conecta a illojuan.tv (catálogo y miniaturas) y a [decapi.me](https://decapi.me),
+un servicio público que dice si el canal de Twitch está en directo (la API oficial de Twitch pide una
+clave secreta que no puede ir en una app pública). No envía ningún dato tuyo. Vistos, Mi lista y
+categorías ocultas se guardan únicamente en la tele. No hay cuentas, analíticas ni anuncios.
 
 ## Compilar
 
@@ -148,6 +150,7 @@ Otras utilidades:
 | `data/Library.kt` | Vistos, Mi lista, novedades y categorías ocultas |
 | `data/Picks.kt` | "Hoy toca", búsqueda y filtros de la ruleta |
 | `Player.kt` | Abre el vídeo en YouTube / SmartTube y el directo en S0undTV / Twitch |
+| `data/LiveStatus.kt` | Comprueba si el Cine está en directo |
 | `ui/HomeScreen.kt` | Cabecera estilo overlay y filas |
 | `ui/RouletteDialog.kt`, `ui/SearchScreen.kt`, `ui/CategoriesDialog.kt`, `ui/AboutDialog.kt` | Ruleta, búsqueda, categorías y aviso |
 | `ui/Theme.kt`, `ui/Components.kt`, `ui/VideoCard.kt` | Paleta, tipografías y piezas comunes |

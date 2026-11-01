@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.adrian.cineillojuan.data.Catalog
 import com.adrian.cineillojuan.data.CatalogSource
 import com.adrian.cineillojuan.data.Library
+import com.adrian.cineillojuan.data.LiveStatus
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -36,6 +37,9 @@ class CatalogViewModel(app: Application) : AndroidViewModel(app) {
     var favorites by mutableStateOf(library.favorites())
         private set
     var hiddenCategories by mutableStateOf(library.hiddenCategories())
+        private set
+    /** Si el Cine está en directo en Twitch (false hasta la primera comprobación; null si falló). */
+    var live by mutableStateOf<Boolean?>(false)
         private set
     /** URL → cuándo apareció en la web. */
     var newVideos by mutableStateOf(library.newVideos())
@@ -74,6 +78,10 @@ class CatalogViewModel(app: Application) : AndroidViewModel(app) {
     fun toggleFavorite(url: String): Boolean {
         favorites = library.toggleFavorite(url)
         return url in favorites
+    }
+
+    suspend fun checkLive() {
+        live = LiveStatus.isCinemaLive()
     }
 
     fun setCategoryHidden(name: String, hidden: Boolean) {

@@ -17,7 +17,7 @@
 > no recoge ningún dato. Los vídeos, miniaturas, nombres y la marca "Cine IlloJuan" pertenecen a sus
 > autores (ver [créditos](#créditos)).
 
-![Portada](docs/screenshots/portada.jpg)
+![Demo: navegar por las filas, tirar de la ruleta y buscar](docs/demo.gif)
 
 ## Qué es
 
@@ -41,6 +41,8 @@ desplaza para que se lea entero. Arriba, **hoy toca** recomienda un vídeo disti
 (preferiblemente uno que no hayas visto). Cuando el Cine está emitiendo aparece el botón
 **● En directo**, que lo abre en [S0undTV](https://github.com/s0und/s0undtv) si lo tienes instalado, o si no en la app oficial de
 Twitch.
+
+![Portada](docs/screenshots/portada.jpg)
 
 ### Ruleta
 

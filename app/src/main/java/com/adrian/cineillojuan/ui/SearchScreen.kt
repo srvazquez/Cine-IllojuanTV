@@ -114,7 +114,7 @@ fun SearchScreen(entries: List<Entry>, library: LibraryState, actions: VideoActi
             when {
                 query.isBlank() -> "Pulsa 🎤 y di lo que quieres ver."
                 results.isEmpty() -> "Nada con «$query». Prueba con otra palabra."
-                else -> "${results.size} resultados para «$query»"
+                else -> "${results.size} ${if (results.size == 1) "resultado" else "resultados"} para «$query»"
             },
             style = MaterialTheme.typography.titleMedium,
             modifier = Modifier.padding(start = Gutter, top = 20.dp, bottom = 8.dp),
